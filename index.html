@@ -32,20 +32,26 @@
     </div>
 
     <script>
-        document.getElementById('installBtn').addEventListener('click', function() {
-            var commandToCopy = 'scoop install https://gist.githubusercontent.com/KailUser/df48b4ef06041ff7740bbcabc25e0adf/raw/b320cc3a32f55d5ce4bcc04bb5885c8122dfa3bc/whereami.json';
+var installBtn = document.getElementById('installBtn');
+installBtn.addEventListener('click', function() {
+    if (installBtn.textContent === 'Copied!') {
+        installBtn.style.backgroundColor = '#007bff';
+        installBtn.textContent = 'Install';
+    } else {
+        var commandToCopy = 'scoop install https://gist.githubusercontent.com/KailUser/df48b4ef06041ff7740bbcabc25e0adf/raw/b320cc3a32f55d5ce4bcc04bb5885c8122dfa3bc/whereami.json';
 
-            var tempInput = document.createElement('input');
-            tempInput.value = commandToCopy;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
+        var tempInput = document.createElement('input');
+        tempInput.value = commandToCopy;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
 
-            var button = document.getElementById('installBtn');
-            button.textContent = 'Copied!';
-            button.style.backgroundColor = 'green';
-        });
+        installBtn.textContent = 'Copied!';
+        installBtn.style.backgroundColor = 'green';
+    }
+});
+
     </script>
 </body>
 </html>
