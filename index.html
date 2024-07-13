@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Site</title>
+    <style>
+        body.dark {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 20%;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="dark">
+    <div class="content">
+        <h1>Whereami?</h1>
+        <p>whereami - an alternative command of whoami. (Shows your current directory)</p>
+        <button id="installBtn">Install</button>
+    </div>
+
+    <script>
+        document.getElementById('installBtn').addEventListener('click', function() {
+            var commandToCopy = 'scoop install https://gist.githubusercontent.com/KailUser/df48b4ef06041ff7740bbcabc25e0adf/raw/b320cc3a32f55d5ce4bcc04bb5885c8122dfa3bc/whereami.json';
+
+            var tempInput = document.createElement('input');
+            tempInput.value = commandToCopy;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            alert('Command copied to clipboard: ' + commandToCopy);
+        });
+    </script>
+</body>
+</html>
